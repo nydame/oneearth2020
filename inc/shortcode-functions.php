@@ -33,11 +33,11 @@ function oesa_show_latest($atts, $content = null) {
 	$p_query = new WP_Query('cat=' . (string)$cat . '&posts_per_page=' . (string)$num);
 
 	while ($p_query->have_posts()): $p_query->the_post();
-		$postHTML .= '<div>';
+		$postHTML .= '<figure>';
 		if (has_post_thumbnail()) {
-			$postHTML .= get_the_post_thumbnail() . '<br />';
+			$postHTML .= get_the_post_thumbnail(null, 'medium') . '<br />';
 		}
-		$postHTML .= '<span>' . $pre_title_span . '</span>' . get_the_title() . '</div>'; 
+		$postHTML .= '<figcaption>' . $pre_title_span . '</figcaption>' . get_the_title() . '</figure>'; 
 	endwhile;
 	wp_reset_postdata();
 

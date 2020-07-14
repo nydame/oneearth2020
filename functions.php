@@ -702,5 +702,9 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 /****** CUSTOM FUNCTIONS *****************************************/
+add_action('after_setup_theme', 'after_oneearth_theme_setup');
+function after_oneearth_theme_setup() {
+	add_theme_support( 'post-thumbnails', array('post') );
+}
 include get_stylesheet_directory() . '/inc/shortcode-functions.php';
 include get_stylesheet_directory() . '/inc/wc-functions.php';
