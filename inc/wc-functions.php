@@ -1,4 +1,9 @@
 <?php
+// Get rid of the sidebar
+function disable_woo_commerce_sidebar() {
+	remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10); 
+}
+add_action('init', 'disable_woo_commerce_sidebar');
 
 // Unhook WC content wrapper
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
