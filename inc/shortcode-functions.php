@@ -2,6 +2,7 @@
 
 //Enable shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
+add_filter('the_content', 'do_shortcode');
 
 // shortcode to display latest num posts in a single category
 function oesa_show_latest($atts, $content = null) {
@@ -55,7 +56,7 @@ function oesa_show_random_testimonial($atts, $content = null) {
 	$rand_post = $postArr[0];
 	if ($rand_post !== null) {
 		setup_postdata($rand_post);
-		$postHTML .= '<p>' . get_the_excerpt() . '<br />&mdash;<span>' . get_the_title($rand_post->ID) . '</span></p>';
+		$postHTML .= '<p>' . get_the_excerpt($rand_post->ID) . '<br />&mdash;<span>' . get_the_title($rand_post->ID) . '</span></p>';
 	}
 	$postHTML .= '<a href="/section/testimonials" title="Visit our Testimonials page">Read more testimonials &rarr;</a></p>';
 	$post = $tmp_post;
