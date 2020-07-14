@@ -2122,6 +2122,12 @@ body:not(.twentyseventeen-front-page) .entry-header {
 	border-bottom: 1px solid #eee;
 }
 
+.single-product .single-featured-image-header {
+	display: flex;
+	position: absolute;
+	width: 100%;
+}
+
 .single-featured-image-header img {
 	display: block;
 	margin: auto;
@@ -4300,12 +4306,6 @@ p > object:only-child {
 
 	.single-featured-image-header {
 		background: transparent;
-	}
-
-	.single-product .single-featured-image-header {
-		display: flex;
-		position: absolute;
-		width: 100%;
 	}
 
 	.entry-meta {
