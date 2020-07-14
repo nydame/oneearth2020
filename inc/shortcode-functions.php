@@ -1,5 +1,8 @@
 <?php
 
+//Enable shortcodes in widgets
+add_filter('widget_text', 'do_shortcode');
+
 // shortcode to display latest num posts in a single category
 function oesa_show_latest($atts, $content = null) {
 	$a = shortcode_atts( array(
