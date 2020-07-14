@@ -401,7 +401,7 @@ if (! function_exists('twentyseventeen_excerpt_more')) {
 		 '<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
 		 esc_url( get_permalink( get_the_ID() ) ),
 		 /* translators: %s: Post title. */
-		 sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ), get_the_title( get_the_ID() ) )
+		 sprintf( __( 'Continue reading' . "&rarr;" . '<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ), get_the_title( get_the_ID() ) )
 	 );
 	 return ' &hellip; ' . $link;
  }
@@ -702,9 +702,22 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 /****** CUSTOM FUNCTIONS *****************************************/
-add_action('after_setup_theme', 'after_oneearth_theme_setup');
+// NB: I also altered twentyseventeen_excerpt_more
+// Define excerpts
+function oneearth_the_excerpt($content) {
+	$p = get_post(); 
+	// echo "<pre>"; var_dump($p); echo "</pre>";
+	if ( ! empty($p->post_excerpt) && $p->post_type != "attachment" ) {
+		$content .= twentyseventeen_excerpt_more( get_permalink( $p->ID ) );
+  }
+	return $content;
+}
+add_filter('get_the_excerpt', 'oneearth_the_excerpt');
+
 function after_oneearth_theme_setup() {
 	add_theme_support( 'post-thumbnails', array('post') );
 }
+add_action('after_setup_theme', 'after_oneearth_theme_setup');
+
 include get_stylesheet_directory() . '/inc/shortcode-functions.php';
 include get_stylesheet_directory() . '/inc/wc-functions.php';
