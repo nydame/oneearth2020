@@ -1347,6 +1347,17 @@ a:hover .nav-title,
 	color: #767676;
 }
 
+.woocommerce .navigation-top .menu-main-menu-container {
+	display: none;
+}
+
+.navigation-top .menu-store-menu-container {
+	display: none;
+}
+.woocommerce .navigation-top .menu-store-menu-container {
+	display: inherit;
+}
+
 .main-navigation {
 	clear: both;
 	display: block;

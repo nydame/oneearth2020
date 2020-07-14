@@ -21,8 +21,15 @@
 	<?php
 	wp_nav_menu(
 		array(
-			'theme_location' => 'top',
+			// default
 			'menu_id'        => 'top-menu',
+		)
+	);
+	wp_nav_menu(
+		array(
+			'theme_location' => 'store',
+			'menu_id'        => 'top-menu',
+			'menu_class'     => 'store-menu'
 		)
 	);
 	?>
