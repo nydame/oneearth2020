@@ -667,3 +667,4 @@ require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 /****** CUSTOM FUNCTIONS *****************************************/
 include '/inc/shortcode-functions.php';
+include '/inc/wc-functions.php';
