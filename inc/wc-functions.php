@@ -15,12 +15,6 @@ add_action('woocommerce_after_main_content', 'oesa_wrapper_end', 10);
 // Declare support for WC
 add_theme_support( 'woocommerce' );
 
-// Register 2nd menu
-function register_woocom_menu() {
-  register_nav_menu('woocom-menu',__( 'Store Menu' ));
-}
-add_action( 'init', 'register_woocom_menu' );
-
 // Define is_woocommerce_related()
 function is_woocommerce_related() {
     if (function_exists('is_woocommerce')) {

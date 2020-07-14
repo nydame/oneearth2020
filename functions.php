@@ -58,11 +58,12 @@ function twentyseventeen_setup() {
 	// Set the default content width.
 	$GLOBALS['content_width'] = 525;
 
-	// This theme uses wp_nav_menu() in two locations.
+	// This theme uses wp_nav_menu() in three locations.
 	register_nav_menus(
 		array(
 			'top'    => __( 'Top Menu', 'twentyseventeen' ),
 			'social' => __( 'Social Links Menu', 'twentyseventeen' ),
+			'store'  => __('Store Menu', 'twentyseventeen')
 		)
 	);
 
