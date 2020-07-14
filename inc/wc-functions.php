@@ -5,10 +5,10 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wr
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10); 
 // Tell WC which content wrapper to use
 function oesa_wrapper_start() {
-  echo '<article>';
+  echo '<div class="wrap">';
 }
 function oesa_wrapper_end() {
-  echo '</article>';
+  echo '</div>';
 }
 add_action('woocommerce_before_main_content', 'oesa_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'oesa_wrapper_end', 10);
