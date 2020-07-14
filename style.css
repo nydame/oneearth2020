@@ -4302,6 +4302,12 @@ p > object:only-child {
 		background: transparent;
 	}
 
+	.single-product .single-featured-image-header {
+		display: flex;
+		position: absolute;
+		width: 100%;
+	}
+
 	.entry-meta {
 		font-size: 9pt;
 	}
