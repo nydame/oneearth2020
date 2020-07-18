@@ -17,7 +17,13 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 		<header class="page-header">
 			<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				// substitute "Category" and "Tag"
+				$archive_title_arr = explode(' ', get_the_archive_title(), 2);
+				if ($archive_title_arr[0] == 'Category:') {
+					echo '<h1 class="page-title">Section: ' . $archive_title_arr[1] . '</h1>';
+				} elseif ($archive_title_arr[0] == 'Tag:') {
+					echo '<h1 class="page-title">Service: ' . $archive_title_arr[1] . '</h1>';
+				}
 				the_archive_description( '<div class="taxonomy-description">', '</div>' );
 			?>
 		</header><!-- .page-header -->
@@ -40,7 +46,11 @@ get_header(); ?>
 				 * called content-___.php (where ___ is the Post Format name) and that
 				 * will be used instead.
 				 */
-				get_template_part( 'template-parts/post/content', get_post_format() );
+				$format = get_post_format();
+				if (! in_array($format, array('audio', 'gallery', 'image', 'video'))) {
+					$format = 'excerpt';
+				}
+				get_template_part( 'template-parts/post/content', $format );
 
 			endwhile;
 

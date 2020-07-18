@@ -42,7 +42,7 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
+		<?php the_post_thumbnail( 'medium', "alt=\"portrait of the artist\"" ); the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -721,3 +721,14 @@ add_action('after_setup_theme', 'after_oneearth_theme_setup');
 
 include get_stylesheet_directory() . '/inc/shortcode-functions.php';
 include get_stylesheet_directory() . '/inc/wc-functions.php';
+
+// Display certain collections of posts alphabetically
+if (! function_exists('oneearth_alphabetical_order')) {
+	function oneearth_alphabetical_order($query) {
+		if ($query->is_category('Collaborators')) {
+			$query->set('orderby', 'title');
+			$query->set('order', 'ASC');
+		}
+	}
+	add_action('pre_get_posts', 'oneearth_alphabetical_order', 12);
+}
