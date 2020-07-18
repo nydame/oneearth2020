@@ -15,10 +15,10 @@
 		the_privacy_policy_link( '', '<span role="separator" aria-hidden="true"></span>' );
 	}
 	?>
-	<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyseventeen' ) ); ?>" class="imprint">
+	<a href="<?php echo esc_url( __( 'https://go-firefly.com/', 'twentyseventeen' ) ); ?>" class="imprint">
 		<?php
-			/* translators: %s: WordPress */
-		printf( __( 'Proudly powered by %s', 'twentyseventeen' ), 'WordPress' );
+			/* translators: %s: Firefly Web Services */
+		printf( __( 'Built by %s', 'twentyseventeen' ), 'Firefly Web Services' );
 		?>
 	</a>
 </div><!-- .site-info -->
