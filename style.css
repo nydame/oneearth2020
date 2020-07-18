@@ -509,6 +509,35 @@ h6 {
 	font-weight: 800;
 }
 
+.home .page .panel-content .entry-title,
+.home .site-content {
+	background-color: black;
+	color: white;
+}
+
+.homepage-welcome {
+	font-size: 1.4rem;
+	margin: 0 auto 3em;
+	max-width: 30em;
+}
+
+.homepage-services {
+	font-size: 1.2rem;
+}
+
+.homepage-tags a {
+	background-color: whitesmoke;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: inline-block;
+	padding: 10px;
+	margin: 1em;
+	text-decoration: none;
+}
+.homepage-tags a:hover {
+	background-color: white;
+}
+
 p {
 	margin: 0 0 1.5em;
 	padding: 0;
