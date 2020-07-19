@@ -1997,10 +1997,17 @@ body.page:not(.twentyseventeen-front-page) .entry-title {
 	text-transform: uppercase;
 }
 
+.header-flex {
+	display: flex;
+}
+
 .entry-header .entry-title {
 	margin-bottom: 0.25em;
 }
 
+.entry-header img {
+	border-radius: 50%;
+}
 .entry-title a {
 	color: #333;
 	text-decoration: none;
@@ -2179,12 +2186,9 @@ body:not(.twentyseventeen-front-page) .entry-header {
 	max-width: 740px;
 }
 
-.single-featured-image-header {
+.single-product .single-featured-image-header {
 	background-color: #fafafa;
 	border-bottom: 1px solid #eee;
-}
-
-.single-product .single-featured-image-header {
 	display: flex;
 	position: absolute;
 	width: 100%;

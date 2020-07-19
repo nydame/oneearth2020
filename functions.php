@@ -54,6 +54,8 @@ if (! function_exists('twentyseventeen_setup')) {
 
 		add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
 
+		add_image_size( 'oneearth-entry-header-image', 200, 200, true );
+		
 		add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
 
 		// Set the default content width.
