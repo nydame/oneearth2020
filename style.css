@@ -97,6 +97,9 @@ main {
 	font-weight: bold;
 	padding-right: 1em;
 }
+.feature-row-after {
+	margin-top: 1em;
+}
 figure {
 	align-items: center;
 	display: flex;

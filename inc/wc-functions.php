@@ -28,6 +28,18 @@ function the_shop_intro() {
 }
 add_action('woocommerce_before_shop_loop', 'the_shop_intro');
 
+// present the coloring books after the shop loop
+function the_coloring_books_post() {
+  $coloring_books = get_post(1556);
+  ?>
+  <hr />
+  <h2><?php echo $coloring_books->post_title; ?></h2>
+  <p><?php echo apply_filters( 'the_content', $coloring_books->post_content ); ?></p>
+  <?php 
+}
+add_action('woocommerce_after_shop_loop', 'the_coloring_books_post');
+
+
 // Add the latest sticky post after the shop loop
 function the_freshest_sticky_post() {
 	$args = array(
@@ -41,7 +53,8 @@ function the_freshest_sticky_post() {
 		while ($pq->have_posts()) {
       $pid = $pq->post->ID;
       $pq->the_post(); ?>
-      <h2 class="feature-row-title"><?php the_title() ?></h2>
+      <h2>Did we mention that we do gorgeous custom artwork?</h2>
+      <h3 class="feature-row-title"><?php the_title() ?></h3>
       <div class="feature-row">
         <figure>
           <a href="<?php the_permalink( $pid ) ?>"><?php echo wp_get_attachment_image( intval(get_post_thumbnail_id($pid)), 'medium'); ?></a>
@@ -51,21 +64,11 @@ function the_freshest_sticky_post() {
         the_excerpt("Read more"); ?>
         </div>
       </div>
+      <p class="entry-content feature-row-after">Are you ready to manifest your vision of the divine? Use our <a href="/contact">contact form</a> to order or propose a beautiful work of art for your home or work space.</p>
 <?php		}
 	}
 }
-add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post', 12);
-
-// present the coloring books after the shop loop
-function the_coloring_books_post() {
-  $coloring_books = get_post(1556);
-  ?>
-  <hr />
-  <h2><?php echo $coloring_books->post_title; ?></h2>
-  <p><?php echo apply_filters( 'the_content', $coloring_books->post_content ); ?></p>
-  <?php 
-}
-add_action('woocommerce_after_shop_loop', 'the_coloring_books_post', 8);
+add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post');
 
 // Define is_woocommerce_related()
 function is_woocommerce_related() {
