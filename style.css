@@ -2133,7 +2133,13 @@ body.page:not(.twentyseventeen-front-page) .entry-title {
 }
 
 body:not(.twentyseventeen-front-page) .entry-header {
-	padding: 1em 0;
+	background-color: whitesmoke;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+.entry-header .column-1 {
+	flex-grow: 2;
 }
 
 body:not(.twentyseventeen-front-page) .entry-header,
@@ -2141,10 +2147,6 @@ body:not(.twentyseventeen-front-page) .entry-content,
 body:not(.twentyseventeen-front-page) #comments {
 	margin-left: auto;
 	margin-right: auto;
-}
-
-body:not(.twentyseventeen-front-page) .entry-header {
-	padding-top: 0;
 }
 
 .blog .entry-meta a.post-edit-link,

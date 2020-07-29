@@ -28,7 +28,7 @@ function the_shop_intro() {
 }
 add_action('woocommerce_before_shop_loop', 'the_shop_intro');
 
-// Add a latest sticky post after the shop loop
+// Add the latest sticky post after the shop loop
 function the_freshest_sticky_post() {
 	$args = array(
 		'post__in' => get_option('sticky_posts'),
@@ -54,16 +54,18 @@ function the_freshest_sticky_post() {
 <?php		}
 	}
 }
-add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post');
+add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post', 12);
 
+// present the coloring books after the shop loop
 function the_coloring_books_post() {
   $coloring_books = get_post(1556);
   ?>
+  <hr />
   <h2><?php echo $coloring_books->post_title; ?></h2>
   <p><?php echo apply_filters( 'the_content', $coloring_books->post_content ); ?></p>
   <?php 
 }
-add_action('woocommerce_after_shop_loop', 'the_coloring_books_post');
+add_action('woocommerce_after_shop_loop', 'the_coloring_books_post', 8);
 
 // Define is_woocommerce_related()
 function is_woocommerce_related() {
