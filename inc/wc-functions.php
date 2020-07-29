@@ -70,7 +70,14 @@ function the_freshest_sticky_post() {
 }
 add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post');
 
+// Add text to all short descriptions
+function oesa_short_description_append($content) {
+  return $content . "See longer desription below.";
+}
+add_filter('woocommerce_short_description', 'oesa_short_description_append');
+
 // Define is_woocommerce_related()
+// NOT WORKING?
 function is_woocommerce_related() {
     if (function_exists('is_woocommerce')) {
         return is_woocommerce() || is_cart() || is_checkout() || is_account_page() || is_wc_endpoint_url();
