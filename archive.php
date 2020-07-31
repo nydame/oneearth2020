@@ -24,7 +24,7 @@ get_header(); ?>
 				} elseif ($archive_title_arr[0] == 'Tag:') {
 					echo '<h1 class="page-title">Service: ' . $archive_title_arr[1] . '</h1>';
 				}
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
+				#the_archive_description( '<div class="taxonomy-description">', '</div>' );
 			?>
 		</header><!-- .page-header -->
 	<?php endif; ?>
