@@ -74,7 +74,7 @@ add_action('woocommerce_after_shop_loop', 'the_freshest_sticky_post');
 function oesa_short_description_append($content) {
   if (! is_shop()) {
     
-    return $content . "See longer desription below.";
+    return $content . "<a href=\"#tab-description\">See longer desription below.</a>";
   } else {
     return $content;
   }
