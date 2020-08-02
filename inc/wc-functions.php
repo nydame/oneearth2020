@@ -30,12 +30,24 @@ add_action('woocommerce_before_shop_loop', 'the_shop_intro');
 
 // present the coloring books after the shop loop
 function the_coloring_books_post() {
-  $coloring_books = get_post(1556);
+  $args = array('p' => 1556);
+  $coloring_books = new WP_Query($args);
+  if ($coloring_books->have_posts()):
+    while ($coloring_books->have_posts() && $coloring_books->post->ID === 1556):
+      $coloring_books->the_post();
   ?>
   <hr />
-  <h2><?php echo $coloring_books->post_title; ?></h2>
-  <p><?php echo apply_filters( 'the_content', $coloring_books->post_content ); ?></p>
-  <?php 
+  <div class="store-insert coloring-books">
+    <h2><?php the_title(); ?></h2>
+    <?php the_content(); ?>
+  </div>
+  <script>
+  // Get rid of hash in more link's URL
+  $moreLink = document.querySelector('.coloring-books .more-link');
+  $moreLink.setAttribute('href', $moreLink.href.split('#')[0]);
+  </script>
+    <?php endwhile; 
+  endif;
 }
 add_action('woocommerce_after_shop_loop', 'the_coloring_books_post');
 
@@ -54,8 +66,8 @@ function the_freshest_sticky_post() {
       $pid = $pq->post->ID;
       $pq->the_post(); ?>
       <h2>Did we mention that we do gorgeous custom artwork?</h2>
-      <h3 class="feature-row-title"><?php the_title() ?></h3>
-      <div class="feature-row">
+      <h3 class="feature-row-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h3>
+      <div class="feature-row store-insert sticky-post">
         <figure>
           <a href="<?php the_permalink( $pid ) ?>"><?php echo wp_get_attachment_image( intval(get_post_thumbnail_id($pid)), 'medium'); ?></a>
           <figcaption><?php echo wp_get_attachment_caption( intval(get_post_thumbnail_id($pid)) ); ?></figcaption>

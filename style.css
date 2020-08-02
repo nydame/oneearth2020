@@ -1239,13 +1239,21 @@ a:active {
 .widget a,
 .site-footer .widget-area a,
 .posts-navigation a,
-.widget_authors a strong {
+.widget_authors a strong,
+.store-insert a,
+.feature-row-title a {
 	-webkit-box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
 	box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
 	-webkit-transition: color 80ms ease-in, -webkit-box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, -webkit-box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, box-shadow 130ms ease-in-out, -webkit-box-shadow 130ms ease-in-out;
+}
+
+.store-insert figure>a,
+.store-insert figure>a:focus,
+.store-insert figure>a:hover {
+	box-shadow: none;
 }
 
 .entry-title a,
@@ -1328,7 +1336,11 @@ a:hover .nav-title,
 .widget .widget-title a:focus,
 .widget .widget-title a:hover,
 .widget ul li a:focus,
-.widget ul li a:hover {
+.widget ul li a:hover,
+.store-insert a:focus,
+.store-insert a:hover,
+.feature-row-title a:focus,
+.feature-row-title a:hover {
 	color: #000;
 	-webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 rgba(0, 0, 0, 1);
 	box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 rgba(0, 0, 0, 1);
@@ -2188,6 +2200,10 @@ body:not(.twentyseventeen-front-page) #comments {
 	content: "";
 	display: block;
 	margin-top: 1.5em;
+}
+.more-link,
+.link-more {
+	text-transform: capitalize;
 }
 
 /* Single Post */
