@@ -3245,6 +3245,11 @@ p > object:only-child {
 	margin-bottom: 0;
 }
 
+.woocommerce-product-gallery.woocommerce-product-gallery--with-images .woocommerce-product-gallery__wrapper {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 /*--------------------------------------------------------------
 17.0 Customizer
 --------------------------------------------------------------*/
