@@ -15,15 +15,8 @@ if ( ! function_exists( 'twentyseventeen_posted_on' ) ) :
 	 */
 	function twentyseventeen_posted_on() {
 
-		// Get the author name; wrap it in a link.
-		$byline = sprintf(
-			/* translators: %s: Post author. */
-			__( 'by %s', 'twentyseventeen' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_the_author() . '</a></span>'
-		);
-
 		// Finally, let's write all of this to the page.
-		echo '<span class="posted-on">' . twentyseventeen_time_link() . '</span><span class="byline"> ' . $byline . '</span>';
+		echo '<span class="posted-on">' . twentyseventeen_time_link() . '</span>';
 	}
 endif;
 
@@ -33,9 +26,9 @@ if ( ! function_exists( 'twentyseventeen_time_link' ) ) :
 	 * Gets a nicely formatted string for the published date.
 	 */
 	function twentyseventeen_time_link() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = 'posted <time class="entry-date published" datetime="%1$s">%2$s</time>';
+		if ( get_the_date() !== get_the_modified_date() ) {
+			$time_string = 'updated <time class="entry-date published updated" datetime="%3$s">%4$s</time>';
 		}
 
 		$time_string = sprintf(

@@ -80,13 +80,33 @@ h1 {
 }
 
 figcaption,
-figure,
 main {
 	display: block;
 }
 
+.feature-row {
+	background-color: #c9c5f9;
+	display: flex;
+}
+.feature-row-title {
+	width: 100%;
+}
+.feature-row-text {
+	align-self: center;
+	flex: 2;
+	font-weight: bold;
+	padding-right: 1em;
+}
+.feature-row-after {
+	margin-top: 1em;
+}
 figure {
-	margin: 1em 0;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-style: italic;
+	text-align: center;
+	width: fit-content;
 }
 
 hr {
@@ -490,6 +510,35 @@ h6 {
 	font-size: 15px;
 	font-size: 0.9375rem;
 	font-weight: 800;
+}
+
+.home .page .panel-content .entry-title,
+.home .site-content {
+	background-color: black;
+	color: white;
+}
+
+.homepage-welcome {
+	font-size: 1.4rem;
+	margin: 0 auto 3em;
+	max-width: 30em;
+}
+
+.homepage-services {
+	font-size: 1.2rem;
+}
+
+.homepage-tags a {
+	background-color: whitesmoke;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	text-decoration: none;
+}
+.homepage-tags a:hover {
+	background-color: white;
 }
 
 p {
@@ -1190,13 +1239,21 @@ a:active {
 .widget a,
 .site-footer .widget-area a,
 .posts-navigation a,
-.widget_authors a strong {
+.widget_authors a strong,
+.store-insert a,
+.feature-row-title a {
 	-webkit-box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
 	box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
 	-webkit-transition: color 80ms ease-in, -webkit-box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, -webkit-box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, box-shadow 130ms ease-in-out;
 	transition: color 80ms ease-in, box-shadow 130ms ease-in-out, -webkit-box-shadow 130ms ease-in-out;
+}
+
+.store-insert figure>a,
+.store-insert figure>a:focus,
+.store-insert figure>a:hover {
+	box-shadow: none;
 }
 
 .entry-title a,
@@ -1279,10 +1336,37 @@ a:hover .nav-title,
 .widget .widget-title a:focus,
 .widget .widget-title a:hover,
 .widget ul li a:focus,
-.widget ul li a:hover {
+.widget ul li a:hover,
+.store-insert a:focus,
+.store-insert a:hover,
+.feature-row-title a:focus,
+.feature-row-title a:hover {
 	color: #000;
 	-webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 rgba(0, 0, 0, 1);
 	box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 3px 0 rgba(0, 0, 0, 1);
+}
+.woocommerce a.button, 
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt {
+	background-color: #c9c5f9;
+	color: #515151;
+}
+
+.woocommerce a.button:hover,
+.woocommerce a.button:focus 
+.woocommerce #respond input#submit.alt:hover, 
+.woocommerce a.button.alt:hover, 
+.woocommerce button.button.alt:hover, 
+.woocommerce input.button.alt:hover,
+.woocommerce #respond input#submit.alt:focus, 
+.woocommerce a.button.alt:focus, 
+.woocommerce button.button.alt:focus, 
+.woocommerce input.button.alt:focus {
+	background-color: #c9c5f9;
+	color: #515151;
+	box-shadow: 5px 5px 5px #f2e575;
 }
 
 /* Fixes linked images */
@@ -1345,6 +1429,17 @@ a:hover .nav-title,
 .navigation-top .current-menu-item > a,
 .navigation-top .current_page_item > a {
 	color: #767676;
+}
+
+.woocommerce .navigation-top .menu-main-menu-container {
+	display: none;
+}
+
+.navigation-top .menu-store-menu-container {
+	display: none;
+}
+.woocommerce .navigation-top .menu-store-menu-container {
+	display: inherit;
 }
 
 .main-navigation {
@@ -1603,6 +1698,11 @@ body {
 	opacity: 1; /* Prevent opacity from changing during selective refreshes in the customize preview */
 }
 
+.home.has-header-image .site-title,
+.home.has-header-video .site-title {
+	font-size: 3rem;
+}
+
 body.has-header-image .site-title,
 body.has-header-video .site-title,
 body.has-header-image .site-title a,
@@ -1615,6 +1715,11 @@ body.has-header-video .site-title a {
 	font-size: 13px;
 	font-size: 0.8125rem;
 	margin-bottom: 0;
+}
+
+.home.has-header-image .site-description,
+.home.has-header-video .site-description {
+	font-size: 2rem;
 }
 
 body.has-header-image .site-description,
@@ -1917,10 +2022,17 @@ body.page:not(.twentyseventeen-front-page) .entry-title {
 	text-transform: uppercase;
 }
 
+.header-flex {
+	display: flex;
+}
+
 .entry-header .entry-title {
 	margin-bottom: 0.25em;
 }
 
+.entry-header img {
+	border-radius: 50%;
+}
 .entry-title a {
 	color: #333;
 	text-decoration: none;
@@ -2046,7 +2158,13 @@ body.page:not(.twentyseventeen-front-page) .entry-title {
 }
 
 body:not(.twentyseventeen-front-page) .entry-header {
-	padding: 1em 0;
+	background-color: whitesmoke;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+.entry-header .column-1 {
+	flex-grow: 2;
 }
 
 body:not(.twentyseventeen-front-page) .entry-header,
@@ -2054,10 +2172,6 @@ body:not(.twentyseventeen-front-page) .entry-content,
 body:not(.twentyseventeen-front-page) #comments {
 	margin-left: auto;
 	margin-right: auto;
-}
-
-body:not(.twentyseventeen-front-page) .entry-header {
-	padding-top: 0;
 }
 
 .blog .entry-meta a.post-edit-link,
@@ -2087,6 +2201,10 @@ body:not(.twentyseventeen-front-page) .entry-header {
 	display: block;
 	margin-top: 1.5em;
 }
+.more-link,
+.link-more {
+	text-transform: capitalize;
+}
 
 /* Single Post */
 
@@ -2099,9 +2217,12 @@ body:not(.twentyseventeen-front-page) .entry-header {
 	max-width: 740px;
 }
 
-.single-featured-image-header {
+.single-product .single-featured-image-header {
 	background-color: #fafafa;
 	border-bottom: 1px solid #eee;
+	display: flex;
+	position: absolute;
+	width: 100%;
 }
 
 .single-featured-image-header img {
@@ -3124,6 +3245,11 @@ p > object:only-child {
 	margin-bottom: 0;
 }
 
+.woocommerce-product-gallery.woocommerce-product-gallery--with-images .woocommerce-product-gallery__wrapper {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 /*--------------------------------------------------------------
 17.0 Customizer
 --------------------------------------------------------------*/
@@ -3791,22 +3917,10 @@ p > object:only-child {
 		background-attachment: fixed;
 	}
 
-	.page-two-column .panel-content .entry-header {
-		float: left;
-		width: 36%;
-	}
-
-	.page-two-column .panel-content .entry-content {
-		float: right;
-		width: 58%;
-	}
-
 	/* Front Page - Recent Posts */
 
 	.page-two-column .panel-content .recent-posts {
 		clear: right;
-		float: right;
-		width: 58%;
 	}
 
 	.panel-content .recent-posts article {
@@ -3872,25 +3986,6 @@ p > object:only-child {
 		width: 32px;
 	}
 
-	body:not(.has-sidebar):not(.page-one-column) .page-header,
-	body.has-sidebar.error404 #primary .page-header,
-	body.page-two-column:not(.archive) #primary .entry-header,
-	body.page-two-column.archive:not(.has-sidebar) #primary .page-header {
-		float: left;
-		width: 36%;
-	}
-
-	.blog:not(.has-sidebar) #primary article,
-	.archive:not(.page-one-column):not(.has-sidebar) #primary article,
-	.search:not(.has-sidebar) #primary article,
-	.error404:not(.has-sidebar) #primary .page-content,
-	.error404.has-sidebar #primary .page-content,
-	body.page-two-column:not(.archive) #primary .entry-content,
-	body.page-two-column #comments {
-		float: right;
-		width: 58%;
-	}
-
 	.blog .site-main > article,
 	.archive .site-main > article,
 	.search .site-main > article {
@@ -3899,8 +3994,6 @@ p > object:only-child {
 
 	.navigation.pagination {
 		clear: both;
-		float: right;
-		width: 58%;
 	}
 
 	.has-sidebar .navigation.pagination,
