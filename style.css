@@ -57,6 +57,7 @@ Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
 html {
 	font-family: sans-serif;
 	line-height: 1.15;
+	scroll-behavior: smooth;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
@@ -87,15 +88,16 @@ main {
 .feature-row {
 	background-color: #c9c5f9;
 	display: flex;
+	flex-wrap: wrap;
 }
 .feature-row-title {
 	width: 100%;
 }
 .feature-row-text {
 	align-self: center;
-	flex: 2;
+	flex: 2 250px;
 	font-weight: bold;
-	padding-right: 1em;
+	padding: 1em;
 }
 .feature-row-after {
 	margin-top: 1em;
@@ -107,6 +109,38 @@ figure {
 	font-style: italic;
 	text-align: center;
 	width: fit-content;
+}
+
+.feature-row figure {
+	flex: 1 250px;
+}
+
+.donorbox-form {
+	display: flex;
+	flex-direction: column;
+	max-height: 650px;
+}
+
+.donorbox-form summary {
+	border: 1px solid #ddd;
+	margin: 0.5em 0;
+	max-width: 10em;
+	padding: 0.5em;
+	width: fit-content;
+}
+
+.donorbox-wrap {
+	margin-bottom: 2em;
+}
+
+.postid-1805 .wp-block-group,
+.postid-1677 .wp-block-group {
+	border-top: 1px solid currentColor;
+	padding-top: 1em;
+}
+
+#mantra-list {
+	scroll-margin-top: 4em;
 }
 
 hr {
@@ -304,6 +338,7 @@ menu {
 }
 
 summary {
+	cursor: pointer;
 	display: list-item;
 }
 
@@ -1352,6 +1387,8 @@ a:hover .nav-title,
 .woocommerce input.button.alt {
 	background-color: #c9c5f9;
 	color: #515151;
+	display: inline-block;
+	margin-top: 0.618em;
 }
 
 .woocommerce a.button:hover,
@@ -1367,6 +1404,17 @@ a:hover .nav-title,
 	background-color: #c9c5f9;
 	color: #515151;
 	box-shadow: 5px 5px 5px #f2e575;
+}
+
+/* Styles for sold-out, unique items that we still show in the store */
+.product.sold-individually.onbackorder .woocommerce-loop-product__title::before {
+	color: red;
+	content: "•";
+	font-size: 2em;
+	line-height: 0.5;
+}
+.product.sold-individually.onbackorder .add_to_cart_button {
+	display: none;
 }
 
 /* Fixes linked images */
@@ -1392,6 +1440,7 @@ a:hover .nav-title,
 
 .post-thumbnail a img {
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 }

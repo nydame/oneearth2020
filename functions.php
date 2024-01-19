@@ -454,10 +454,11 @@ if (! function_exists('twentyseventeen_colors_css_wrap')) {
 		 $customize_preview_data_hue = 'data-hue="' . $hue . '"';
 	 }
 	 ?>
-	 <style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
-		 <?php echo twentyseventeen_custom_colors_css(); ?>
-	 </style>
-	 <?php
+<style type="text/css" id="custom-theme-colors" <?php echo $customize_preview_data_hue; ?>>
+<?php echo twentyseventeen_custom_colors_css();
+?>
+</style>
+<?php
  }
 }
 add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
@@ -471,24 +472,24 @@ if (! function_exists('twentyseventeen_scripts')) {
 	 wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
  
 	 // Theme stylesheet.
-	 wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri(), array(), '20190507' );
+	 wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri(), array(), null );
  
 	 // Theme block stylesheet.
-	 wp_enqueue_style( 'twentyseventeen-block-style', get_theme_file_uri( '/assets/css/blocks.css' ), array( 'twentyseventeen-style' ), '20190105' );
+	 wp_enqueue_style( 'twentyseventeen-block-style', get_theme_file_uri( '/assets/css/blocks.css' ), array( 'twentyseventeen-style' ), null );
  
 	 // Load the dark colorscheme.
 	 if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
-		 wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'twentyseventeen-style' ), '20190408' );
+		 wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'twentyseventeen-style' ), null );
 	 }
  
 	 // Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
 	 if ( is_customize_preview() ) {
-		 wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'twentyseventeen-style' ), '20161202' );
+		 wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'twentyseventeen-style' ), null );
 		 wp_style_add_data( 'twentyseventeen-ie9', 'conditional', 'IE 9' );
 	 }
  
 	 // Load the Internet Explorer 8 specific stylesheet.
-	 wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'twentyseventeen-style' ), '20161202' );
+	 wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'twentyseventeen-style' ), null );
 	 wp_style_add_data( 'twentyseventeen-ie8', 'conditional', 'lt IE 9' );
  
 	 // Load the html5 shiv.
@@ -534,7 +535,7 @@ add_action( 'wp_enqueue_scripts', 'twentyseventeen_scripts' );
 if (! function_exists('twentyseventeen_block_editor_styles')) {
 	function twentyseventeen_block_editor_styles() {
 	 // Block styles.
-	 wp_enqueue_style( 'twentyseventeen-block-editor-style', get_theme_file_uri( '/assets/css/editor-blocks.css' ), array(), '20190328' );
+	 wp_enqueue_style( 'twentyseventeen-block-editor-style', get_theme_file_uri( '/assets/css/editor-blocks.css' ), array(), null );
 	 // Add custom fonts.
 	 wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
  }
@@ -703,7 +704,18 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
-/****** CUSTOM FUNCTIONS *****************************************/
+/****** WOOCOMMERCE CUSTOMIZATION **************************************/
+$notice_suspended_shipping = "SPECIAL NOTICE FOR FALL 2023: Eka is in India until mid-November! Shipping will resume shortly before Thanksgiving. Thank you for your patience.";
+if (! function_exists('oesa_shop_notice_suspended_shipping')) {
+	$oesa_shop_notice_suspended_shipping = function () use ($notice_suspended_shipping) {
+		echo "<p style=\"background-color: yellow; color: black; padding: 1em;\">{$notice_suspended_shipping}</p>";
+	};
+	add_action('woocommerce_after_cart_table', $oesa_shop_notice_suspended_shipping);
+	add_action('woocommerce_after_cart', $oesa_shop_notice_suspended_shipping);
+	add_action('woocommerce_before_checkout_form', $oesa_shop_notice_suspended_shipping);
+}
+
+/****** OTHER CUSTOM FUNCTIONS *****************************************/
 // NB: I also altered twentyseventeen_excerpt_more
 // Define excerpts
 function oneearth_the_excerpt($content) {
@@ -733,4 +745,15 @@ if (! function_exists('oneearth_alphabetical_order')) {
 		}
 	}
 	add_action('pre_get_posts', 'oneearth_alphabetical_order', 12);
+}
+
+// Enqueue scripts and styles
+add_action( 'wp_enqueue_scripts', 'oneearth_scripts' );
+function oneearth_scripts() {
+	// Active Campaign script
+	wp_enqueue_script('active-campaign', 'https://oneearthsacredarts.activehosted.com/f/embed.php?id=1', array(), '1.0.0', true);
+	// remove if contact page, shop page, or checkout page
+	if ( is_page('contact') || is_shop() || is_checkout() ) {
+		wp_dequeue_script( 'active-campaign' );
+	}
 }

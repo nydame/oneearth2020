@@ -1,4 +1,4 @@
-=== Twenty Seventeen ===
+=== One Earth 2020 (based on Twenty Seventeen) ===
 Contributors: wordpressdotorg
 Tested up to: 5.0
 Version: 2.3

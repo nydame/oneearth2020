@@ -19,12 +19,12 @@ get_header(); ?>
 			<?php
 				// substitute "Category" and "Tag"
 				$archive_title_arr = explode(' ', get_the_archive_title(), 2);
-				if ($archive_title_arr[0] == 'Category:') {
-					echo '<h1 class="page-title">Section: ' . $archive_title_arr[1] . '</h1>';
-				} elseif ($archive_title_arr[0] == 'Tag:') {
-					echo '<h1 class="page-title">Topic: ' . $archive_title_arr[1] . '</h1>';
-				} elseif ($archive_title_arr[0] == 'Service:') {
-					echo '<h1 class="page-title">Service: ' . $archive_title_arr[1] . '</h1>';
+				echo '<h1 class="page-title">Section: ' . $archive_title_arr[1] . '</h1>';
+				if ($description = category_description()) {
+					echo "<h2 class=\"category-description\">$description</h2>";
+				}
+				if (is_category( 'resources' )) {
+					get_template_part('template-parts/embed/form', 'donorbox');
 				}
 				#the_archive_description( '<div class="taxonomy-description">', '</div>' );
 			?>

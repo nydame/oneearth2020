@@ -61,6 +61,10 @@
 
 	<div class="entry-content">
 		<?php
+		
+		if ( in_category('resources')) {
+			get_template_part('template-parts/embed/form', 'donorbox');
+		}
 		the_content(
 			sprintf(
 				/* translators: %s: Post title. */
