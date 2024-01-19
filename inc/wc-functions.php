@@ -24,7 +24,22 @@ add_theme_support( 'woocommerce' );
 function the_shop_intro() {
   ?>
   <h2>Invite More Beauty into Your World</h2>
-  <?php
+  <style>
+    .widget-title.wpc-filter-title {
+      font-weight: bold;
+    }
+    /* .wpc-filters-range-inputs .ui-slider-horizontal .ui-slider-range {
+      background-color: #a6a6a6;
+    } */
+    .wpc-filters-section {
+      background-color: #e4e2fc;
+      padding: 1rem;
+    }
+    .wpc-filters-section, .wpc-filters-section input {
+      font-size: 0.8rem;
+    }
+  </style>
+  <?php echo do_shortcode( '[fe_widget id="1" show_selected="yes" show_count="yes" horizontal="yes" columns="3"]', false );
 }
 add_action('woocommerce_before_shop_loop', 'the_shop_intro');
 
