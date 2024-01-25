@@ -39,9 +39,17 @@ function the_shop_intro() {
       font-size: 0.8rem;
     }
   </style>
+  <div class="products-wrap">
   <?php echo do_shortcode( '[fe_widget id="1" show_selected="yes" show_count="yes" horizontal="yes" columns="3"]', false );
 }
 add_action('woocommerce_before_shop_loop', 'the_shop_intro');
+// insert a div to close the products-wrap after the shop loop
+function the_shop_outro() {
+  ?>
+  </div><p class="entry-content">Don't see what you're looking for? <a href="/contact">Contact us</a> to request a custom piece.</p>
+  <?php
+}
+add_action('woocommerce_after_shop_loop', 'the_shop_outro');
 
 // present the coloring books after the shop loop
 function the_coloring_books_post() {
